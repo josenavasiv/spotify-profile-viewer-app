@@ -12,7 +12,7 @@ const useSpotify = () => {
 			}
 			spotifyAPI.setAccessToken(session.user.accessToken);
 		}
-	}, []);
+	}, [session]);
 
 	return spotifyAPI;
 };

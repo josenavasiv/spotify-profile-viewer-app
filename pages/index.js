@@ -7,6 +7,7 @@ import Song from '../components/Song';
 import Artist from '../components/Artist';
 
 export default function Home() {
+	// Status has "loading" & "authenticated" values - Use these to handle loading spinners etc...
 	const { data: session, status } = useSession();
 	const spotifyApiHook = useSpotify();
 

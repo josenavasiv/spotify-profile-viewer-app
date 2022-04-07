@@ -59,7 +59,7 @@ const refreshAccessToken = async (token) => {
 		return {
 			...token,
 			accessToken: refreshedToken.access_token,
-			accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000, // Represents 1 hr
+			accessTokenExpires: Date.now + refreshedToken.expires_in * 1000, // Represents 1 hr (Date.now is NOT invoked here)
 			refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
 		};
 	} catch (error) {
