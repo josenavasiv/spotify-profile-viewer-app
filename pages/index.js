@@ -1,7 +1,6 @@
 import { getSession, useSession, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import useSpotify from '../hooks/useSpotify';
-import Link from 'next/link';
 
 import Song from '../components/Song';
 import Artist from '../components/Artist';
@@ -25,17 +24,17 @@ export default function Home() {
 
 	const fetchTopArtists = async () => {
 		const data = await spotifyApiHook.getMyTopArtists({ limit: 10 });
-		console.log(data);
+		// console.log(data);
 		setTopArtists(data?.body?.items);
 	};
 	const fetchTopTracks = async () => {
 		const data = await spotifyApiHook.getMyTopTracks({ limit: 10 });
-		console.log(data);
+		// console.log(data);
 		setTopTracks(data?.body?.items);
 	};
 	const fetchProfileDetails = async () => {
 		const data = await spotifyApiHook.getMe();
-		console.log(data);
+		// console.log(data);
 		setProfileDetails(data?.body);
 	};
 

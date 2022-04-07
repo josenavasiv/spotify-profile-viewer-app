@@ -8,7 +8,7 @@ const login = ({ providers }) => {
 				<div className="mt-5" key={provider.name}>
 					<button
 						className=" border-[#ff006a] text-[#ff006a] border-2 p-3 md:p-4 rounded-full font-semibold text-sm md:text-lg"
-						onClick={() => signIn(provider.id, { callback: '/' })}
+						onClick={() => signIn(provider.id, { callbackUrl: '/' })}
 					>
 						Login with {provider.name}
 					</button>
