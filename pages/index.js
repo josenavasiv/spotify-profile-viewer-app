@@ -22,20 +22,20 @@ export default function Home() {
 		}
 	}, [spotifyApiHook, session]);
 
-	const fetchTopArtists = async () => {
-		const data = await spotifyApiHook.getMyTopArtists({ limit: 10 });
+	const fetchTopArtists = () => {
+		// const data = await spotifyApiHook.getMyTopArtists({ limit: 10 });
 		// console.log(data);
-		setTopArtists(data?.body?.items);
+		spotifyApiHook.getMyTopArtists({ limit: 10 }).then((data) => setTopArtists(data?.body?.items));
 	};
-	const fetchTopTracks = async () => {
-		const data = await spotifyApiHook.getMyTopTracks({ limit: 10 });
+	const fetchTopTracks = () => {
+		// const data = await spotifyApiHook.getMyTopTracks({ limit: 10 });
 		// console.log(data);
-		setTopTracks(data?.body?.items);
+		spotifyApiHook.getMyTopTracks({ limit: 10 }).then((data) => setTopTracks(data?.body?.items));
 	};
-	const fetchProfileDetails = async () => {
-		const data = await spotifyApiHook.getMe();
+	const fetchProfileDetails = () => {
+		// const data = await spotifyApiHook.getMe();
 		// console.log(data);
-		setProfileDetails(data?.body);
+		spotifyApiHook.getMe().then((data) => setProfileDetails(data?.body));
 	};
 
 	return (

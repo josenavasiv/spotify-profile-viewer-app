@@ -12,14 +12,13 @@ const index = () => {
 
 	useEffect(() => {
 		if (spotifyApiHook.getAccessToken() && id) {
-			fetchSong();
+			fetchArtist();
 		}
 	}, [session, spotifyApiHook]);
 
-	const fetchSong = async () => {
-		const data = await spotifyApiHook.getArtist(id);
-		console.log(data);
-		setArtistDetails(data?.body);
+	const fetchArtist = () => {
+		spotifyApiHook.getArtist(id).then((data) => setArtistDetails(data?.body));
+		// console.log(data);
 	};
 
 	const numberWithCommas = (num) => {
