@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import useSpotify from '../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
+import Navbar from '../../../components/Navbar';
 
 const index = () => {
 	const spotifyApiHook = useSpotify();
@@ -26,30 +27,33 @@ const index = () => {
 	};
 
 	return (
-		<div className="h-screen bg-black text-white flex flex-col space-y-10 justify-center items-center text-sm text-center">
-			<img className="h-64 w-64 rounded-full" src={artistDetails?.images?.[0]?.url} alt="" />
-			<h1 className="font-bold text-7xl">{artistDetails?.name}</h1>
-			<div className="flex flex-row space-x-14 align-middle items-center">
-				<div className="">
-					<p className="text-xl text-[#ff006a] font-semibold ">
-						{artistDetails?.followers?.total ? numberWithCommas(artistDetails?.followers?.total) : ''}
-					</p>
-					<p className="font-thin pt-1">FOLLOWERS</p>
-				</div>
-				<div className="">
-					{artistDetails?.genres?.map((genre) => (
-						<p key={genre} className="text-[#ff006a] text-xl font-semibold capitalize">
-							{genre}
+		<>
+			<Navbar absolute={true} />
+			<div className="h-screen bg-black text-white flex flex-col space-y-10 justify-center items-center text-sm text-center">
+				<img className="h-64 w-64 rounded-full" src={artistDetails?.images?.[0]?.url} alt="" />
+				<h1 className="font-bold text-7xl">{artistDetails?.name}</h1>
+				<div className="flex flex-row space-x-14 align-middle items-center">
+					<div className="">
+						<p className="text-xl text-[#ff006a] font-semibold ">
+							{artistDetails?.followers?.total ? numberWithCommas(artistDetails?.followers?.total) : ''}
 						</p>
-					))}
-					<p className="font-thin pt-1">GENRES</p>
-				</div>
-				<div className="">
-					<p className="text-[#ff006a] text-xl font-semibold">{artistDetails?.popularity}%</p>
-					<p className="font-thin pt-1">POPULARITY</p>
+						<p className="font-medium text-gray-500 pt-1">FOLLOWERS</p>
+					</div>
+					<div className="">
+						{artistDetails?.genres?.map((genre) => (
+							<p key={genre} className="text-[#ff006a] text-xl font-semibold capitalize">
+								{genre}
+							</p>
+						))}
+						<p className="pt-1 font-medium text-gray-500">GENRES</p>
+					</div>
+					<div className="">
+						<p className="text-[#ff006a] text-xl font-semibold">{artistDetails?.popularity}%</p>
+						<p className="font-medium text-gray-500 pt-1">POPULARITY</p>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

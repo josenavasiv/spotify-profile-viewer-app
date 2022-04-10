@@ -4,6 +4,7 @@ import useSpotify from '../../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import { millisToMinutesAndSeconds } from '../../../../lib/timeConverter';
 import { motion } from 'framer-motion';
+import Navbar from '../../../../components/Navbar';
 
 const index = () => {
 	const spotifyApiHook = useSpotify();
@@ -23,12 +24,8 @@ const index = () => {
 	};
 
 	return (
-		<motion.div
-			initial={{ y: 10, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
-			exit={{ y: 10, opacity: 0 }}
-			transition={{ duration: 0.8 }}
-		>
+		<>
+			<Navbar absolute={true} />
 			<div className="h-screen bg-black text-white flex flex-col items-center justify-center space-y-5 p-10 ">
 				<div className="text-center">
 					<h1 className="text-lg font-semibold text-gray-400">Recommended Track</h1>
@@ -54,7 +51,7 @@ const index = () => {
 					</div>
 				</div>
 			</div>
-		</motion.div>
+		</>
 	);
 };
 

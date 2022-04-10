@@ -4,6 +4,7 @@ import useSpotify from '../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import { millisToMinutesAndSeconds } from '../../../lib/timeConverter';
 import { motion } from 'framer-motion';
+import Navbar from '../../../components/Navbar';
 
 const index = () => {
 	const spotifyApiHook = useSpotify();
@@ -29,14 +30,10 @@ const index = () => {
 	};
 
 	return (
-		<motion.div
-			initial={{ y: 10, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
-			exit={{ y: 10, opacity: 0 }}
-			transition={{ duration: 0.8, delay: 0.3 }}
-		>
+		<>
+			<Navbar />
 			<div className="h-screen bg-black text-white flex flex-col items-center p-10 pt-28 space-y-10 ">
-				<div className="flex flex-row space-x-10 self-start ">
+				<div className="flex flex-row space-x-10">
 					<img className="h-56 w-56 justify-start" src={songDetails?.album?.images?.[0]?.url} alt="" />
 					<div className="flex flex-col space-y-3">
 						<h1 className="font-bold text-5xl">{songDetails?.name}</h1>
@@ -52,7 +49,7 @@ const index = () => {
 						</div>
 					</div>
 				</div>
-				<div className="grid grid-rows-4 grid-cols-2 md:grid-rows-2 md:grid-cols-4 w-full h-80 md:h-40 gap-4">
+				<div className="grid grid-rows-4 grid-cols-2 md:grid-rows-2 md:grid-cols-4 w-full h-80 md:h-40 gap-4 max-w-5xl">
 					<div className="text-gray-500 flex flex-col items-center justify-center">
 						<p className="text-xl font-bold">{millisToMinutesAndSeconds(songDetails?.duration_ms)}</p>
 						<p className="text-xs">Duration</p>
@@ -88,31 +85,41 @@ const index = () => {
 				</div>
 
 				<div className="grow"></div>
+				<motion.div
+					initial={{ y: 10, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					exit={{ y: 10, opacity: 0 }}
+					transition={{ duration: 0.8, delay: 0.3 }}
+					className="w-full max-w-5xl"
+				>
+					<div className="w-full space-y-7 max-w-5xl">
+						<div className="text-center">
+							<h1 className="text-md font-semibold text-gray-400">Recommended Tracks</h1>
+						</div>
 
-				<div className="w-full space-y-7">
-					<div className="text-center">
-						<h1 className="text-md font-semibold text-gray-400">Recommended Tracks</h1>
+						<div className="grid md:grid-cols-5 w-full justify-evenly space-y-10 md:space-y-0">
+							{recommendations?.map((recommendation) => (
+								<div
+									key={recommendation?.id}
+									// onClick={() => handlePush(recommendation?.id)}
+									onClick={() => router.push(`/recommended/song/${recommendation?.id}`)}
+									className="flex flex-col items-center justify-center space-y-2 md:space-y-3 cursor-pointer"
+								>
+									<img className="h-36 w-36" src={recommendation?.album?.images?.[0]?.url} alt="" />
+									<p className="truncate text-sm font-semibold text-gray-400 w-36 text-center">
+										{recommendation?.name}
+									</p>
+									<p className="text-gray-500 text-xs">{recommendation?.artists?.[0]?.name}</p>
+								</div>
+							))}
+						</div>
 					</div>
+				</motion.div>
 
-					<div className="grid md:grid-cols-5 w-full justify-evenly space-y-10 md:space-y-0">
-						{recommendations?.map((recommendation) => (
-							<div
-								key={recommendation?.id}
-								// onClick={() => handlePush(recommendation?.id)}
-								onClick={() => router.push(`/recommended/song/${recommendation?.id}`)}
-								className="flex flex-col items-center justify-center space-y-2 md:space-y-3 cursor-pointer"
-							>
-								<img className="h-36 w-36" src={recommendation?.album?.images?.[0]?.url} alt="" />
-								<p className="truncate text-sm font-semibold text-gray-400 w-36 text-center">
-									{recommendation?.name}
-								</p>
-								<p className="text-gray-500 text-xs">{recommendation?.artists?.[0]?.name}</p>
-							</div>
-						))}
-					</div>
-				</div>
+				<div className="grow"></div>
+				<div className="grow"></div>
 			</div>
-		</motion.div>
+		</>
 	);
 };
 

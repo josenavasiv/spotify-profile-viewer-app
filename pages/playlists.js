@@ -1,7 +1,7 @@
 import { useSession, getSession } from 'next-auth/react';
 import useSpotify from '../hooks/useSpotify';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import Navbar from '../components/Navbar';
 
 const playlists = () => {
 	const { data: session, status } = useSession();
@@ -22,22 +22,25 @@ const playlists = () => {
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-center h-full w-full text-white bg-black p-10 space-y-5">
-			<p className="text-lg font-bold text-gray-400">YOUR PLAYLISTS</p>
-			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-5xl">
-				{playlists?.map((playlist) => (
-					<div
-						key={playlist?.id}
-						className="flex flex-col justify-center items-center text-center h-60 w-60 text-xs space-y-2"
-					>
-						<img className="w-44 h-44 rounded" src={playlist?.images?.[0]?.url} alt="" />
-						<p className="truncate w-full font-bold text-sm">{playlist?.name}</p>
-						<p className="font-semibold text-gray-500">{playlist?.tracks?.total} TRACKS</p>
-						{/* <p>{playlist?.href}</p> */}
-					</div>
-				))}
+		<>
+			<Navbar />
+			<div className="flex flex-col items-center justify-center h-full w-full text-white bg-black p-10 space-y-5">
+				<p className="text-lg font-bold text-gray-400">YOUR PLAYLISTS</p>
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-5xl">
+					{playlists?.map((playlist) => (
+						<div
+							key={playlist?.id}
+							className="flex flex-col justify-center items-center text-center h-60 w-60 text-xs space-y-2"
+						>
+							<img className="w-44 h-44 rounded" src={playlist?.images?.[0]?.url} alt="" />
+							<p className="truncate w-full font-bold text-sm">{playlist?.name}</p>
+							<p className="font-semibold text-gray-500">{playlist?.tracks?.total} TRACKS</p>
+							{/* <p>{playlist?.href}</p> Link to Own page that shows the tracks*/}
+						</div>
+					))}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

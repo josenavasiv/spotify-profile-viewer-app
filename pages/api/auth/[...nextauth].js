@@ -14,6 +14,7 @@ export default NextAuth({
 	secret: process.env.JWT_SECRET,
 	pages: {
 		signIn: '/login',
+		signOut: '/login',
 	},
 	callbacks: {
 		// jwt() callback is called whenever a JWT is created (signin) or updated (session is accessed in client) -> Functional Component Load & useEffect
@@ -50,6 +51,7 @@ export default NextAuth({
 
 const refreshAccessToken = async (token) => {
 	try {
+		// (This doesn't completely run when need to refresh access token)
 		// Providing spotifyAPI with the updated tokens constantly
 		spotifyAPI.setAccessToken(token.accessToken);
 		spotifyAPI.setRefreshToken(token.refreshToken);
