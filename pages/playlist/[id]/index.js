@@ -44,7 +44,7 @@ const index = () => {
 					</div>
 				</div>
 				<div></div>
-				<h1 className="text-2xl font-bold text-gray-500 text-center">Playlist Tracks</h1>
+				<p className="text-lg font-bold text-gray-400">PLAYLIST TRACKS</p>
 				<div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl gap-6">
 					{playlistDetails?.tracks?.items?.map((track) => (
 						<Song

@@ -7,7 +7,7 @@ const login = ({ providers }) => {
 			{Object.values(providers).map((provider) => (
 				<div className="mt-5" key={provider.name}>
 					<button
-						className=" border-[#ff006a] text-[#ff006a] border-2 p-3 md:p-4 rounded-full font-semibold text-sm md:text-lg"
+						className=" border-[#ff006a] text-[#ff006a] border-2 p-2 md:p-3 rounded-full font-semibold text-sm md:text-lg"
 						onClick={() => signIn(provider.id, { callbackUrl: '/' })}
 					>
 						Login with {provider.name}
