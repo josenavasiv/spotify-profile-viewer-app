@@ -39,29 +39,22 @@ export default function Home() {
 	};
 
 	return (
-		<div className="flex flex-col items-center h-screen w-screen text-white bg-black p-10 overflow-y-scroll">
+		<div className="flex flex-col items-center h-full w-full text-white bg-black p-10 ">
 			<div className="flex flex-col md:flex-row items-center md:items-start justify-between space-y-10 md:space-x-10">
 				<img className="h-36 w-36 rounded-full" src={profileDetails?.images?.[0]?.url} alt="" />
 				<div className="flex flex-col justify-around items-center md:items-start space-y-3">
-					<h1 className="text-5xl font-bold">{profileDetails?.display_name}</h1>
+					<h1 className="text-5xl font-bold text-[#ff006a]">{profileDetails?.display_name}</h1>
 					<div>
-						<p className="font-thin">Followers: {profileDetails?.followers?.total}</p>
+						<p className="text-sm font-semibold text-gray-500">
+							Followers: {profileDetails?.followers?.total}
+						</p>
 					</div>
 				</div>
 			</div>
 
-			<div className="m-10">
-				<button
-					className=" border-[#ff006a] border-2 text-[#ff006a] p-1 px-10 rounded-full font-semibold text-sm md:text-lg"
-					onClick={signOut}
-				>
-					Logout
-				</button>
-			</div>
-
-			<div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4">
-				<div className="flex flex-col space-y-10">
-					<h1 className="text-2xl font-thin">Current Top Artists</h1>
+			<div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4">
+				<div className="flex flex-col space-y-8">
+					<h1 className="text-2xl font-bold text-gray-500">Current Top Artists</h1>
 					{topArtists.map((artist) => (
 						<div key={artist?.id}>
 							<Artist name={artist?.name} img_url={artist?.images?.[0].url} id={artist?.id} />
@@ -69,8 +62,8 @@ export default function Home() {
 					))}
 				</div>
 
-				<div className="flex flex-col space-y-10">
-					<h1 className="text-2xl font-thin">Current Top Tracks</h1>
+				<div className="flex flex-col space-y-8">
+					<h1 className="text-2xl font-bold text-gray-500">Current Top Tracks</h1>
 					{topTracks.map((track) => (
 						<div key={track?.id}>
 							<Song

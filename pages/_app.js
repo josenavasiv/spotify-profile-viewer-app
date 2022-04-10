@@ -2,6 +2,7 @@ import { SessionProvider } from 'next-auth/react';
 import '../styles/globals.css';
 import { AnimatePresence } from 'framer-motion';
 import { motion } from 'framer-motion';
+import Layout from '../layouts/main';
 
 const variants = {
 	hidden: { opacity: 0, x: 0, y: 20 },
@@ -17,15 +18,16 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, router }) {
 				animate="enter"
 				exit="exit"
 				variants={variants}
-				transition={{ duration: 0.4, type: 'easeInOut' }}
+				transition={{ duration: 0.6, type: 'easeInOut' }}
 				style={{ position: 'relative' }}
 				key={router.pathname}
 			>
 				<SessionProvider session={session}>
-					<Component {...pageProps} key={router.route} />
+					<Layout>
+						<Component {...pageProps} key={router.route} />
+					</Layout>
 				</SessionProvider>
 			</motion.div>
-			;
 		</AnimatePresence>
 	);
 }

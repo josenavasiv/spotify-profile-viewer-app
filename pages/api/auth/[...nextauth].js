@@ -63,6 +63,7 @@ const refreshAccessToken = async (token) => {
 			refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
 		};
 	} catch (error) {
+		console.log('REFRESH ERROR !!!!!');
 		console.log(error);
 		return {
 			...token,
