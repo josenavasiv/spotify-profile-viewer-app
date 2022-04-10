@@ -2,11 +2,13 @@ import { useSession, getSession } from 'next-auth/react';
 import useSpotify from '../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
+import { useRouter } from 'next/router';
 
 const playlists = () => {
 	const { data: session, status } = useSession();
 	const spotifyApiHook = useSpotify();
 	const [playlists, setPlaylists] = useState([]);
+	const router = useRouter();
 
 	useEffect(() => {
 		if (spotifyApiHook.getAccessToken()) {
@@ -30,7 +32,8 @@ const playlists = () => {
 					{playlists?.map((playlist) => (
 						<div
 							key={playlist?.id}
-							className="flex flex-col justify-center items-center text-center h-60 w-60 text-xs space-y-2"
+							className="flex flex-col justify-center items-center text-center h-60 w-60 text-xs space-y-2 hover:cursor-pointer"
+							onClick={() => router.push(`/playlist/${playlist?.id}`)}
 						>
 							<img className="w-44 h-44 rounded" src={playlist?.images?.[0]?.url} alt="" />
 							<p className="truncate w-full font-bold text-sm">{playlist?.name}</p>

@@ -19,7 +19,7 @@ const Song = ({ name, album, artist, duration, img_url, id }) => {
 			>
 				<img className="h-11 w-11" src={img_url} alt={name} />
 				<div className="flex flex-col w-72 justify-between">
-					<div>{name}</div>
+					<div className="truncate">{name}</div>
 					<div className="truncate text-gray-500">
 						{artist} • {album}
 					</div>

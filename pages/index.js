@@ -59,25 +59,27 @@ export default function Home() {
 					<div className="flex flex-col space-y-8">
 						<h1 className="text-2xl font-bold text-gray-500">Current Top Artists</h1>
 						{topArtists.map((artist) => (
-							<div key={artist?.id}>
-								<Artist name={artist?.name} img_url={artist?.images?.[0].url} id={artist?.id} />
-							</div>
+							<Artist
+								key={artist?.id}
+								name={artist?.name}
+								img_url={artist?.images?.[0].url}
+								id={artist?.id}
+							/>
 						))}
 					</div>
 
 					<div className="flex flex-col space-y-8">
 						<h1 className="text-2xl font-bold text-gray-500">Current Top Tracks</h1>
 						{topTracks.map((track) => (
-							<div key={track?.id}>
-								<Song
-									name={track?.name}
-									album={track?.album?.name}
-									artist={track?.artists?.[0]?.name}
-									duration={track?.duration_ms}
-									img_url={track?.album?.images?.[0]?.url}
-									id={track?.id}
-								/>
-							</div>
+							<Song
+								name={track?.name}
+								album={track?.album?.name}
+								artist={track?.artists?.[0]?.name}
+								duration={track?.duration_ms}
+								img_url={track?.album?.images?.[0]?.url}
+								id={track?.id}
+								key={track?.id}
+							/>
 						))}
 					</div>
 				</div>
