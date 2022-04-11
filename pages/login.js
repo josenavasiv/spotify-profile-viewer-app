@@ -1,6 +1,10 @@
 import { getProviders, signIn } from 'next-auth/react';
+import cache from 'memory-cache';
 
 const login = ({ providers }) => {
+	// If new user is logging in, the cache is cleared
+	cache.clear();
+
 	return (
 		<div className="flex flex-col items-center bg-black min-h-screen w-full justify-center">
 			<h1 className="text-white font-bold text-2xl md:text-5xl">Spotify Profile Viewer</h1>

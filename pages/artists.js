@@ -17,18 +17,11 @@ const artists = () => {
 		}
 	}, [spotifyApiHook, session]);
 
-	// const fetchTopArtists = () => {
-	// 	spotifyApiHook
-	// 		.getMyTopArtists({ limit: 30 })
-	// 		.then((data) => setTopArtists(data?.body?.items))
-	// 		.catch((error) => signOut());
-	// };
-
 	const cachedFetchTopArtists = () => {
 		const cachedResponse = cache.get('topArtists');
 		if (cachedResponse) {
 			setTopArtists(cachedResponse);
-			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			// console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
 			return cachedResponse;
 		} else {
 			spotifyApiHook
@@ -64,3 +57,10 @@ const artists = () => {
 };
 
 export default artists;
+
+// const fetchTopArtists = () => {
+// 	spotifyApiHook
+// 		.getMyTopArtists({ limit: 30 })
+// 		.then((data) => setTopArtists(data?.body?.items))
+// 		.catch((error) => signOut());
+// };

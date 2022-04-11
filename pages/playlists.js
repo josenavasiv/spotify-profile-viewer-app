@@ -18,18 +18,11 @@ const playlists = () => {
 		}
 	}, [spotifyApiHook, session]);
 
-	// const fetchUserPlaylists = () => {
-	// 	spotifyApiHook
-	// 		.getUserPlaylists()
-	// 		.then((data) => setPlaylists(data?.body?.items))
-	// 		.catch((error) => signOut());
-	// };
-
 	const cachedFetchUserPlaylists = () => {
 		const cachedResponse = cache.get('userPlaylists');
 		if (cachedResponse) {
 			setPlaylists(cachedResponse);
-			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			// console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
 			return cachedResponse;
 		} else {
 			spotifyApiHook

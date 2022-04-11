@@ -24,36 +24,11 @@ export default function Home() {
 		}
 	}, [spotifyApiHook, session]);
 
-	// const fetchTopArtists = () => {
-	// 	// const data = await spotifyApiHook.getMyTopArtists({ limit: 10 });
-	// 	// console.log(data);
-	// 	spotifyApiHook
-	// 		.getMyTopArtists({ limit: 10 })
-	// 		.then((data) => setTopArtists(data?.body?.items))
-	// 		.catch((error) => signOut());
-	// };
-	// const fetchTopTracks = () => {
-	// 	// const data = await spotifyApiHook.getMyTopTracks({ limit: 10 });
-	// 	// console.log(data);
-	// 	spotifyApiHook
-	// 		.getMyTopTracks({ limit: 10 })
-	// 		.then((data) => setTopTracks(data?.body?.items))
-	// 		.catch((error) => signOut());
-	// };
-	// const fetchProfileDetails = () => {
-	// 	// const data = await spotifyApiHook.getMe();
-	// 	// console.log(data);
-	// 	spotifyApiHook
-	// 		.getMe()
-	// 		.then((data) => setProfileDetails(data?.body))
-	// 		.catch((error) => signOut());
-	// };
-
 	const cachedFetchTopArtists = () => {
 		const cachedResponse = cache.get('topArtists10');
 		if (cachedResponse) {
 			setTopArtists(cachedResponse);
-			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			// console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
 			return cachedResponse;
 		} else {
 			spotifyApiHook
@@ -70,7 +45,7 @@ export default function Home() {
 		const cachedResponse = cache.get('topTracks10');
 		if (cachedResponse) {
 			setTopTracks(cachedResponse);
-			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			// console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
 			return cachedResponse;
 		} else {
 			spotifyApiHook
@@ -87,7 +62,7 @@ export default function Home() {
 		const cachedResponse = cache.get('profile');
 		if (cachedResponse) {
 			setProfileDetails(cachedResponse);
-			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			// console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
 			return cachedResponse;
 		} else {
 			spotifyApiHook
@@ -157,3 +132,28 @@ export const getServerSideProps = async (context) => {
 		},
 	};
 };
+
+// const fetchTopArtists = () => {
+// 	// const data = await spotifyApiHook.getMyTopArtists({ limit: 10 });
+// 	// console.log(data);
+// 	spotifyApiHook
+// 		.getMyTopArtists({ limit: 10 })
+// 		.then((data) => setTopArtists(data?.body?.items))
+// 		.catch((error) => signOut());
+// };
+// const fetchTopTracks = () => {
+// 	// const data = await spotifyApiHook.getMyTopTracks({ limit: 10 });
+// 	// console.log(data);
+// 	spotifyApiHook
+// 		.getMyTopTracks({ limit: 10 })
+// 		.then((data) => setTopTracks(data?.body?.items))
+// 		.catch((error) => signOut());
+// };
+// const fetchProfileDetails = () => {
+// 	// const data = await spotifyApiHook.getMe();
+// 	// console.log(data);
+// 	spotifyApiHook
+// 		.getMe()
+// 		.then((data) => setProfileDetails(data?.body))
+// 		.catch((error) => signOut());
+// };

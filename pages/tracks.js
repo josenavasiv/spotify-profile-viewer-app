@@ -16,18 +16,11 @@ const tracks = () => {
 		}
 	}, [spotifyApiHook, session]);
 
-	// const fetchTopTracks = () => {
-	// 	spotifyApiHook
-	// 		.getMyTopTracks({ limit: 30 })
-	// 		.then((data) => setTopTracks(data?.body?.items))
-	// 		.catch((error) => signOut());
-	// };
-
 	const cachedFetchTopTracks = () => {
 		const cachedResponse = cache.get('topTracks');
 		if (cachedResponse) {
 			setTopTracks(cachedResponse);
-			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			// console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
 			return cachedResponse;
 		} else {
 			spotifyApiHook
@@ -64,3 +57,10 @@ const tracks = () => {
 };
 
 export default tracks;
+
+// const fetchTopTracks = () => {
+// 	spotifyApiHook
+// 		.getMyTopTracks({ limit: 30 })
+// 		.then((data) => setTopTracks(data?.body?.items))
+// 		.catch((error) => signOut());
+// };

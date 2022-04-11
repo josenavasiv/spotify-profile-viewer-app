@@ -9,7 +9,6 @@ const useSpotify = () => {
 
 	useEffect(() => {
 		if (session) {
-			console.log(session);
 			if (session.error === 'RefreshAccessTokenError') {
 				signIn(); // Pushes to signing page (Force SignIn)
 			}
