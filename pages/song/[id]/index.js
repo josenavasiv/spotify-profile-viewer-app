@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import useSpotify from '../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import { millisToMinutesAndSeconds } from '../../../lib/timeConverter';
@@ -26,7 +26,8 @@ const index = () => {
 		spotifyApiHook.getAudioAnalysisForTrack(id).then((analysis_data) => setAnalysisDetails(analysis_data?.body));
 		spotifyApiHook
 			.getRecommendations({ seed_tracks: [id], limit: 5 })
-			.then((recommendations_data) => setRecommendations(recommendations_data?.body?.tracks));
+			.then((recommendations_data) => setRecommendations(recommendations_data?.body?.tracks))
+			.catch((error) => signOut());
 	};
 
 	return (
@@ -43,8 +44,9 @@ const index = () => {
 						</p>
 						<div>
 							<button className="bg-[#ff006a] text-white p-2 px-3 rounded-full font-semibold text-xs">
-								{/* <a href={songDetails?.external_urls?.spotify}>PLAY ON SPOTIFY</a> */}
-								PLAY ON SPOTIFY
+								<a href={songDetails?.external_urls?.spotify} target="_blank" rel="noopener noreferrer">
+									PLAY ON SPOTIFY
+								</a>
 							</button>
 						</div>
 					</div>

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import useSpotify from '../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../../../components/Navbar';
@@ -22,7 +22,7 @@ const index = () => {
 		spotifyApiHook
 			.getPlaylist(id)
 			.then((data) => setPlaylistDetails(data?.body))
-			.catch((error) => console.log(error));
+			.catch((error) => signOut());
 	};
 
 	return (
@@ -34,11 +34,18 @@ const index = () => {
 					<div className="flex flex-col space-y-3">
 						<h1 className="font-bold text-5xl">{playlistDetails?.name}</h1>
 						<p className="text-lg font-bold text-gray-400">{playlistDetails?.owner?.display_name}</p>
-						<p className="text-gray-500 text-md ">Followers: {playlistDetails?.followers?.total}</p>
+						<p className="text-gray-500 text-xs font-medium ">
+							Followers: {playlistDetails?.followers?.total}
+						</p>
 						<div>
 							<button className="bg-[#ff006a] text-white p-2 px-3 rounded-full font-semibold text-xs">
-								{/* <a href={playlistDetails?.external_urls?.spotify}>PLAY ON SPOTIFY</a> */}
-								PLAY ON SPOTIFY
+								<a
+									href={playlistDetails?.external_urls?.spotify}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									PLAY ON SPOTIFY
+								</a>
 							</button>
 						</div>
 					</div>

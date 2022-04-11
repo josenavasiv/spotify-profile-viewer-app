@@ -1,9 +1,7 @@
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import useSpotify from '../../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
-import { millisToMinutesAndSeconds } from '../../../../lib/timeConverter';
-import { motion } from 'framer-motion';
 import Navbar from '../../../../components/Navbar';
 
 const index = () => {
@@ -20,7 +18,10 @@ const index = () => {
 	}, [session, spotifyApiHook]);
 
 	const fetchSongThen = () => {
-		spotifyApiHook.getTrack(id).then((data) => setRecommendedSongDetails(data?.body));
+		spotifyApiHook
+			.getTrack(id)
+			.then((data) => setRecommendedSongDetails(data?.body))
+			.catch((error) => signOut());
 	};
 
 	return (
@@ -44,8 +45,13 @@ const index = () => {
 						</p>
 						<div>
 							<button className="bg-[#ff006a] text-white p-2 px-3 rounded-full font-semibold text-xs">
-								{/* <a href={songDetails?.external_urls?.spotify}>PLAY ON SPOTIFY</a> */}
-								PLAY ON SPOTIFY
+								<a
+									href={recommendedSongDetails?.external_urls?.spotify}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									PLAY ON SPOTIFY
+								</a>
 							</button>
 						</div>
 					</div>

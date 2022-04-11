@@ -1,4 +1,4 @@
-import { useSession, getSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import useSpotify from '../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
@@ -20,7 +20,7 @@ const playlists = () => {
 		spotifyApiHook
 			.getUserPlaylists()
 			.then((data) => setPlaylists(data?.body?.items))
-			.catch((error) => console.log(error));
+			.catch((error) => signOut());
 	};
 
 	return (

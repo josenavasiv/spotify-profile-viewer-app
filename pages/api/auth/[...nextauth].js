@@ -36,6 +36,7 @@ export default NextAuth({
 			}
 
 			// If the account or user DNE we refresh the token
+			console.log('REFRESHING');
 			return await refreshAccessToken(token);
 		},
 		// Runs everytime the session is checked this function runs
@@ -51,13 +52,14 @@ export default NextAuth({
 
 const refreshAccessToken = async (token) => {
 	try {
+		console.log('BEGIN REFRESH ACCESS TOKEN');
 		// (This doesn't completely run when need to refresh access token)
 		// Providing spotifyAPI with the updated tokens constantly
 		spotifyAPI.setAccessToken(token.accessToken);
 		spotifyAPI.setRefreshToken(token.refreshToken);
-
-		const { body: refreshedToken } = await spotifyAPI.refreshAccessToken();
-
+		const tokenData = await spotifyAPI.refreshAccessToken();
+		console.log(tokenData);
+		console.log('BEGIN REFRESH ACCESS TOKEN 222222222222222');
 		return {
 			...token,
 			accessToken: refreshedToken.access_token,

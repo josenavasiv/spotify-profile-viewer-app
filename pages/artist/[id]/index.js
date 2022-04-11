@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import useSpotify from '../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../../../components/Navbar';
@@ -18,7 +18,10 @@ const index = () => {
 	}, [session, spotifyApiHook]);
 
 	const fetchArtist = () => {
-		spotifyApiHook.getArtist(id).then((data) => setArtistDetails(data?.body));
+		spotifyApiHook
+			.getArtist(id)
+			.then((data) => setArtistDetails(data?.body))
+			.catch((error) => signOut());
 		// console.log(data);
 	};
 

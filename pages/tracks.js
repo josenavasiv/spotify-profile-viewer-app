@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import useSpotify from '../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
@@ -19,7 +19,7 @@ const tracks = () => {
 		spotifyApiHook
 			.getMyTopTracks({ limit: 30 })
 			.then((data) => setTopTracks(data?.body?.items))
-			.catch((error) => console.log(error));
+			.catch((error) => signOut());
 	};
 
 	return (

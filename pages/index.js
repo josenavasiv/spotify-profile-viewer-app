@@ -26,17 +26,26 @@ export default function Home() {
 	const fetchTopArtists = () => {
 		// const data = await spotifyApiHook.getMyTopArtists({ limit: 10 });
 		// console.log(data);
-		spotifyApiHook.getMyTopArtists({ limit: 10 }).then((data) => setTopArtists(data?.body?.items));
+		spotifyApiHook
+			.getMyTopArtists({ limit: 10 })
+			.then((data) => setTopArtists(data?.body?.items))
+			.catch((error) => signOut());
 	};
 	const fetchTopTracks = () => {
 		// const data = await spotifyApiHook.getMyTopTracks({ limit: 10 });
 		// console.log(data);
-		spotifyApiHook.getMyTopTracks({ limit: 10 }).then((data) => setTopTracks(data?.body?.items));
+		spotifyApiHook
+			.getMyTopTracks({ limit: 10 })
+			.then((data) => setTopTracks(data?.body?.items))
+			.catch((error) => signOut());
 	};
 	const fetchProfileDetails = () => {
 		// const data = await spotifyApiHook.getMe();
 		// console.log(data);
-		spotifyApiHook.getMe().then((data) => setProfileDetails(data?.body));
+		spotifyApiHook
+			.getMe()
+			.then((data) => setProfileDetails(data?.body))
+			.catch((error) => signOut());
 	};
 
 	return (

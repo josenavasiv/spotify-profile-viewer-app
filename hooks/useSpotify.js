@@ -9,8 +9,8 @@ const useSpotify = () => {
 
 	useEffect(() => {
 		if (session) {
+			console.log(session);
 			if (session.error === 'RefreshAccessTokenError') {
-				router.push('/');
 				signIn(); // Pushes to signing page (Force SignIn)
 			}
 			spotifyAPI.setAccessToken(session.user.accessToken);
