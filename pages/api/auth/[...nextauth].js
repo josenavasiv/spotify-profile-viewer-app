@@ -43,7 +43,7 @@ export default NextAuth({
 		// Constantly provides tokens on function run
 		async session({ session, token }) {
 			session.user.accessToken = token.accessToken;
-			session.user.refreshToken = token.refreshToken;
+			session.error = token.error;
 			session.user.username = token.username;
 			return session;
 		},
@@ -63,12 +63,12 @@ const refreshAccessToken = async (token) => {
 		return {
 			...token,
 			accessToken: refreshedToken.access_token,
-			accessTokenExpires: Date.now + refreshedToken.expires_in * 1000, // Represents 1 hr (Date.now is NOT invoked here)
+			accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000, // Represents 1 hr
 			refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
 		};
 	} catch (error) {
-		console.log('REFRESH ERROR !!!!!');
 		console.log(error);
+		console.log('ERROR MESSAGE END');
 		return {
 			...token,
 			error: 'RefreshAccessTokenError',
