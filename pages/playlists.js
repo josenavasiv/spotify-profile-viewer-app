@@ -3,6 +3,7 @@ import useSpotify from '../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useRouter } from 'next/router';
+import cache from 'memory-cache';
 
 const playlists = () => {
 	const { data: session, status } = useSession();
@@ -12,15 +13,33 @@ const playlists = () => {
 
 	useEffect(() => {
 		if (spotifyApiHook.getAccessToken()) {
-			fetchUserPlaylists();
+			// fetchUserPlaylists();
+			cachedFetchUserPlaylists();
 		}
 	}, [spotifyApiHook, session]);
 
-	const fetchUserPlaylists = () => {
-		spotifyApiHook
-			.getUserPlaylists()
-			.then((data) => setPlaylists(data?.body?.items))
-			.catch((error) => signOut());
+	// const fetchUserPlaylists = () => {
+	// 	spotifyApiHook
+	// 		.getUserPlaylists()
+	// 		.then((data) => setPlaylists(data?.body?.items))
+	// 		.catch((error) => signOut());
+	// };
+
+	const cachedFetchUserPlaylists = () => {
+		const cachedResponse = cache.get('userPlaylists');
+		if (cachedResponse) {
+			setPlaylists(cachedResponse);
+			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			return cachedResponse;
+		} else {
+			spotifyApiHook
+				.getUserPlaylists()
+				.then((data) => {
+					setPlaylists(data?.body?.items);
+					cache.put('userPlaylists', data?.body?.items, 3 * 60000); // 3mins
+				})
+				.catch((error) => signOut());
+		}
 	};
 
 	return (

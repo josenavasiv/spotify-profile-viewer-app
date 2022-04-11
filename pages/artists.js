@@ -3,6 +3,7 @@ import useSpotify from '../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useRouter } from 'next/router';
+import cache from 'memory-cache';
 
 const artists = () => {
 	const { data: session, status } = useSession();
@@ -12,15 +13,32 @@ const artists = () => {
 
 	useEffect(() => {
 		if (spotifyApiHook.getAccessToken()) {
-			fetchTopArtists();
+			cachedFetchTopArtists();
 		}
 	}, [spotifyApiHook, session]);
 
-	const fetchTopArtists = () => {
-		spotifyApiHook
-			.getMyTopArtists({ limit: 30 })
-			.then((data) => setTopArtists(data?.body?.items))
-			.catch((error) => signOut());
+	// const fetchTopArtists = () => {
+	// 	spotifyApiHook
+	// 		.getMyTopArtists({ limit: 30 })
+	// 		.then((data) => setTopArtists(data?.body?.items))
+	// 		.catch((error) => signOut());
+	// };
+
+	const cachedFetchTopArtists = () => {
+		const cachedResponse = cache.get('topArtists');
+		if (cachedResponse) {
+			setTopArtists(cachedResponse);
+			console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+			return cachedResponse;
+		} else {
+			spotifyApiHook
+				.getMyTopArtists({ limit: 30 })
+				.then((data) => {
+					setTopArtists(data?.body?.items);
+					cache.put('topArtists', data?.body?.items, 3 * 60000); // 3mins
+				})
+				.catch((error) => signOut());
+		}
 	};
 
 	return (

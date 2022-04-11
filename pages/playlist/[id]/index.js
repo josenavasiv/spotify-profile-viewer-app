@@ -4,6 +4,7 @@ import useSpotify from '../../../hooks/useSpotify';
 import { useEffect, useState } from 'react';
 import Navbar from '../../../components/Navbar';
 import Song from '../../../components/Song';
+import cache from 'memory-cache';
 
 const index = () => {
 	const spotifyApiHook = useSpotify();
@@ -71,3 +72,20 @@ const index = () => {
 };
 
 export default index;
+
+// const cachedFetchPlaylistDetails = () => {
+// 	const cachedResponse = cache.get('playlistDetails');
+// 	if (cachedResponse) {
+// 		setPlaylistDetails(cachedResponse);
+// 		console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
+// 		return cachedResponse;
+// 	} else {
+// 		spotifyApiHook
+// 			.getPlaylist(id)
+// 			.then((data) => {
+// 				setPlaylistDetails(data?.body);
+// 				cache.put('playlistDetails', data?.body, 3 * 60000); // 3mins
+// 			})
+// 			.catch((error) => signOut());
+// 	}
+// };
