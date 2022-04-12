@@ -12,7 +12,7 @@ const login = ({ providers }) => {
 				<div className="mt-5" key={provider.name}>
 					<button
 						className=" border-[#ff006a] text-[#ff006a] border-2 p-2 md:p-3 rounded-full font-semibold text-sm md:text-lg"
-						onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+						onClick={() => signIn(provider.id, { callbackUrl: process.env.NEXTAUTH_URL + '/' })}
 					>
 						Login with {provider.name}
 					</button>
