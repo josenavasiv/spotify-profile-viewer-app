@@ -47,9 +47,6 @@ export default NextAuth({
 			session.user.username = token.username;
 			return session;
 		},
-		async redirect() {
-			return process.env.NEXTAUTH_URL;
-		},
 	},
 });
 
