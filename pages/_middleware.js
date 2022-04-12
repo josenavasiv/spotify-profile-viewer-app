@@ -20,6 +20,6 @@ export const middleware = async (req) => {
 
 	// Redirects to /login if token DNE or not going to a protected route
 	if (!token && pathname !== url.pathname) {
-		return NextResponse.rewrite(url);
+		return NextResponse.redirect(url);
 	}
 };
