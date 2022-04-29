@@ -1,11 +1,12 @@
-
 <h1 align="center">
   http://spotify-profile-viewer-app.vercel.app/
 </h1>
 
-<iframe src="https://giphy.com/embed/Hb1gEcdn1InGctLzZ7" width="480" height="237" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/Hb1gEcdn1InGctLzZ7">via GIPHY</a></p>
-
 A Spotify profile viewer app built with React and Nextjs. Includes authentication handled with NextAuth and used TailwindCSS for styling purposes.
+
+![](https://i.imgur.com/cj9Hyi1.png)
+![](https://i.imgur.com/6fjN3vu.png)
+![](https://i.imgur.com/9GoVYYA.png)
 
 ### Built with:
 
@@ -31,9 +32,9 @@ Unfortunately I am unable to request a quota extension that allows this app to g
 
     ```bash
     NEXTAUTH_URL=http://localhost:3000
-	NEXT_PUBLIC_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxx
-	NEXT_PUBLIC_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxx
-	JWT_SECRET=create-your-own-jwt-secret
+    NEXT_PUBLIC_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxx
+    NEXT_PUBLIC_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxx
+    JWT_SECRET=create-your-own-jwt-secret
     ```
 
 3. Start development server
