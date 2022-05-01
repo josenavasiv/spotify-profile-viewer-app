@@ -40,7 +40,7 @@ Unfortunately, I am unable to request a quota extension that allows this app to 
     JWT_SECRET=create-your-own-jwt-secret
     ```
 
-3. Within the settings of the [Spotify App](https://developer.spotify.com/dashboard/) you recently created in your dashboard, add the following under the redirect URI's section
+3. Within the settings of the [Spotify App](https://developer.spotify.com/dashboard/) you recently created in your dashboard, add the following under the redirect URI's section (for [next-auth](https://next-auth.js.org/providers/spotify))
 
     ```bash
     http://localhost:3000/api/auth/callback/spotify
