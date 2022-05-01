@@ -5,7 +5,7 @@
   Spotify Profile Viewer App
 </h1>
 
-A [Spotify Profile Viewer App](http://spotify-profile-viewer-app.vercel.app/) built with React and Nextjs. Includes authentication handled with NextAuth and used TailwindCSS for styling purposes.
+A [Spotify Profile Viewer App](http://spotify-profile-viewer-app.vercel.app/) built with React and Nextjs. Includes authentication handled with NextAuth and used TailwindCSS for styling purposes. This app consumes the [Spotify Web Api](https://developer.spotify.com/documentation/web-api/) in order to retrieve the user's profile details, as well as specific details of the user's hearted songs and playlists. Thanks to [thelinmicheal](https://github.com/thelinmichael/spotify-web-api-node), can easily consume the Spotify Web Api via pre-defined functions that automatically pass in the authorization tokens, required for access, along with specific requests to the Spotify Web Api.
 
 ![](https://i.imgur.com/cj9Hyi1.png)
 ![](https://i.imgur.com/6fjN3vu.png)
@@ -23,7 +23,7 @@ A [Spotify Profile Viewer App](http://spotify-profile-viewer-app.vercel.app/) bu
 
 ## Setup
 
-Unfortunately, I am unable to request a quota extension that allows this app to go public. However, if interested in running it locally, you would need to create a new app in the [Spotify Web API](https://developer.spotify.com/dashboard/applications) and retrieve the client id and secret.
+Unfortunately, I am unable to request a quota extension that allows this app to be used publically. However, if interested in running it locally, you would need to create a new app in the [Spotify Web API](https://developer.spotify.com/dashboard/applications) and retrieve the client id and secret.
 
 1. Install dependencies
 
