@@ -1,8 +1,11 @@
+<div align="center">
+  <img alt="Halcyon" src="https://app-artworks.sfo3.digitaloceanspaces.com/spotify.svg" width="100" />
+</div>
 <h1 align="center">
-  http://spotify-profile-viewer-app.vercel.app/
+  Spotify Profile Viewer App
 </h1>
 
-A Spotify profile viewer app built with React and Nextjs. Includes authentication handled with NextAuth and used TailwindCSS for styling purposes.
+A [Spotify Profile Viewer App](http://spotify-profile-viewer-app.vercel.app/) built with React and Nextjs. Includes authentication handled with NextAuth and used TailwindCSS for styling purposes.
 
 ![](https://i.imgur.com/cj9Hyi1.png)
 ![](https://i.imgur.com/6fjN3vu.png)
