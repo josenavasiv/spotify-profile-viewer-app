@@ -23,7 +23,7 @@ A [Spotify Profile Viewer App](http://spotify-profile-viewer-app.vercel.app/) bu
 
 ## Setup
 
-Unfortunately, I am unable to request a quota extension that allows this app to be used publically. However, if interested in running it locally, you would need to create a new app in the [Spotify Web API](https://developer.spotify.com/dashboard/applications) and retrieve the client id and secret.
+Unfortunately, I am unable to request a quota extension that allows this app to be used publically. It *can* be used, but it requires me manually adding your email associated with your Spotify account. However, if interested in running it locally, you would need to create a new app in the [Spotify Web API](https://developer.spotify.com/dashboard/applications) and retrieve the client id and secret.
 
 1. Install dependencies
 

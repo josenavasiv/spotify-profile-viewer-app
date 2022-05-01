@@ -28,6 +28,7 @@ export default function Home() {
 		const cachedResponse = cache.get('topArtists10');
 		if (cachedResponse) {
 			setTopArtists(cachedResponse);
+			console.log(cachedResponse);
 			// console.log(cachedResponse, 'RETURNING CACHED RESPONSE');
 			return cachedResponse;
 		} else {

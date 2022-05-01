@@ -14,7 +14,7 @@ export const middleware = async (req) => {
 
 	// Allows request if request is for next-auth session|token creation
 	// The callback of the providers in their web api (GitHub, Spotify,...)
-	if (pathname.includes('/api/auth') || token) {
+	if (pathname.includes('/api/auth') || token || pathname.includes('/demo')) {
 		return NextResponse.next(); // Continues on
 	}
 
