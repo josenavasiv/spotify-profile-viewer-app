@@ -23,7 +23,7 @@ A [Spotify Profile Viewer App](http://spotify-profile-viewer-app.vercel.app/) bu
 
 ## Setup
 
-Unfortunately I am unable to request a quota extension that allows this app to go public. However, if interested in running it locally, you would need to create a new app in the [Spotify Web API](https://developer.spotify.com/dashboard/applications) and retrieve the client id and secret.
+Unfortunately, I am unable to request a quota extension that allows this app to go public. However, if interested in running it locally, you would need to create a new app in the [Spotify Web API](https://developer.spotify.com/dashboard/applications) and retrieve the client id and secret.
 
 1. Install dependencies
 
@@ -40,7 +40,13 @@ Unfortunately I am unable to request a quota extension that allows this app to g
     JWT_SECRET=create-your-own-jwt-secret
     ```
 
-3. Start development server
+3. Within the settings of the [Spotify App](https://developer.spotify.com/dashboard/) you recently created in your dashboard add the following under the redurect URI's section
+
+    ```bash
+    http://localhost:3000/api/auth/callback/spotify
+    ```
+
+4. Start development server
 
     ```bash
     npm run dev
