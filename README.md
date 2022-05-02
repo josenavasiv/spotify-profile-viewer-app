@@ -10,6 +10,7 @@ A [Spotify Profile Viewer App](http://spotify-profile-viewer-app.vercel.app/) bu
 ![](https://i.imgur.com/cj9Hyi1.png)
 ![](https://i.imgur.com/6fjN3vu.png)
 ![](https://i.imgur.com/9GoVYYA.png)
+![](https://i.imgur.com/l1GP4wJ.png)
 
 ### Built with:
 
@@ -35,8 +36,8 @@ Unfortunately, I am unable to request a quota extension that allows this app to 
 
     ```bash
     NEXTAUTH_URL=http://localhost:3000
-    NEXT_PUBLIC_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxx
-    NEXT_PUBLIC_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxx
+    NEXT_PUBLIC_CLIENT_SECRET=spotify-app-client-secret
+    NEXT_PUBLIC_CLIENT_ID=spotify-app-client-id
     JWT_SECRET=create-your-own-jwt-secret
     ```
 
